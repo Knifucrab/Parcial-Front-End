@@ -1,9 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Form from './Form';
+import FormModal from './FormModal';
 
 const style = {
     position: 'absolute',
@@ -17,7 +16,7 @@ const style = {
     p: 4,
   };
 
-function ReusableButton({nombre,fecha,categoria,precio,cantidad,total,funcion}){
+function ReusableButton({nombre,fecha,categoria,precio,cantidad,total,funcion,setRow,producto,row,rowLength,currentId}){
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -33,13 +32,20 @@ function ReusableButton({nombre,fecha,categoria,precio,cantidad,total,funcion}){
         aria-describedby="modal-modal-description">
       
       <Box sx={style}>
-          <Form 
+          <FormModal 
           fecha={fecha}
           categoria={categoria}
           precio={precio}
           cantidad={cantidad}
           total={total}
           funcion={funcion}
+          setRow={setRow}
+          handleClose={handleClose}
+          nombre={nombre}
+          producto={producto}
+          row={row}
+          rowLength={rowLength}
+          currentId={currentId}
           />
         </Box>
 

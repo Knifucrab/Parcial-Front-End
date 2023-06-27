@@ -12,33 +12,15 @@ import ReusableButton from './ReusableButton';
 
 function MainTable() {
 
-const [row, setRow] = useState(
-  [{
-  fecha:'15/05/2023',categoria: 'Ford', producto:'papas y gaseosa',precio: 1969, cantidad: 5, total: 10000,
-  },
-  {
-    fecha:'PAPA XVII',categoria: 'Pepe', producto:'coca',precio: 1969, cantidad: 5, total: 10000,
-    }
-],
-  );
+const [row, setRow] = useState([]);
 
-function addProduct(){
-
-  setRow({
-    fecha:{}
-  })
-
-}
-
-function editProduct(){
-
-}
+const rowLength = row.length;
 
   return (
 
     <Box sx={{  m: 5, flexGrow: 1 }}>
 
-      <ReusableButton nombre="Agregar producto" funcion={addProduct} />
+      <ReusableButton nombre="Agregar producto" setRow={setRow} rowLength={rowLength} row={row}/>
 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -71,11 +53,15 @@ function editProduct(){
                 <ReusableButton 
                 nombre="Editar"
                 fecha={row.fecha}
+                producto={row.producto}
                 categoria={row.categoria}
                 precio={row.precio}
                 cantidad={row.cantidad}
                 total={row.total}
-                funcion={editProduct}
+                setRow={setRow}
+                row={row}
+                rowLength={rowLength}
+                currentId={row.id}
                 
                 />
                 </TableCell>
