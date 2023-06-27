@@ -6,7 +6,7 @@ import {useState} from 'react';
 
 function FormModal({fecha,categoria,precio,cantidad,producto,setRow,handleClose,nombre,row,rowLength,currentId}){
 
-const [updateState, setUpdateState] =useState(-1)
+const [arrayLista, setArrayLista] = useState([])
 
   function handleSubmit(event){
     event.preventDefault();
@@ -26,27 +26,36 @@ const [updateState, setUpdateState] =useState(-1)
           total
           }
 
+
           handleClose();
-          console.log(row[0]);
 
 setRow((prevList) =>{
 return prevList.concat(newList)
 })
+
+setArrayLista((prevList) =>{
+  return prevList.concat(newList)
+  })
+
+
   }
 
   function handleEdit(event){
-    console.log(currentId);
 
+event.preventDefault();
     const categoriaEditado = event.target.elements.categoria.value;
     const precioEditado = event.target.elements.precio.value;
     const cantidadEditado = event.target.elements.cantidad.value;
     const productoEditado = event.target.elements.producto.value;
 
-    // const newList = row.map((li) =>(
-    //   li.id === currentId ? {...li, categoria: categoriaEditado  } : li
-    // ))
 
-    // setRow(newList)
+    const newList = arrayLista.map((li) =>(
+      
+    li.id === currentId ? {...li, categoria: categoriaEditado  } : li
+    ) )
+
+    setArrayLista(newList)
+    console.log(arrayLista);
     
   }
 
