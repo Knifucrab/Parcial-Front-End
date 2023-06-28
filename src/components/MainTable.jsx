@@ -39,7 +39,7 @@ function MainTable() {
     <Box sx={{ m: 5, flexGrow: 1 }}>
       <ReusableButton nombre="Agregar producto" setRow={setRow} rowLength={rowLength} row={row} />
 
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{mb:30}}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>

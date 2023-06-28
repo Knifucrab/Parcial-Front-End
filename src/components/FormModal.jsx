@@ -32,7 +32,7 @@ function FormModal({ fecha, categoria, precio, cantidad, producto, setRow, handl
     const precioEditado = event.target.elements.precio.value;
     const cantidadEditado = event.target.elements.cantidad.value;
     const productoEditado = event.target.elements.producto.value;
-  
+    const total = precioEditado * cantidadEditado;
     setRow(prevList => {
       return prevList.map(item => {
         if (item.id === currentId) {
@@ -41,7 +41,8 @@ function FormModal({ fecha, categoria, precio, cantidad, producto, setRow, handl
             categoria: categoriaEditado,
             precio: precioEditado,
             cantidad: cantidadEditado,
-            producto: productoEditado
+            producto: productoEditado,
+            total
           };
         }
         return item;
@@ -115,15 +116,15 @@ function FormModal({ fecha, categoria, precio, cantidad, producto, setRow, handl
         </Box>
 
         <Box sx={{mb: 2, mt: 2}}>
-          <TextField type='text' color="secondary"  label='Producto' name='producto' placeholder="Ingresar nombre producto" required />
+          <TextField type='text' color="secondary"  label='Producto' name='producto' placeholder={producto} required />
         </Box>
 
         <Box sx={{mb: 2}}>
-          <TextField type='number' color="secondary"  label='Precio' name='precio' placeholder="Ingresar precio individual" required />
+          <TextField type='number' color="secondary"  label='Precio' name='precio' placeholder={precio} required />
         </Box>
 
         <Box sx={{mb: 2, mt: 2}}>
-          <TextField type='number' color="secondary"  label='Cantidad' name='cantidad' placeholder="Ingresar cantidad de productos" required />
+          <TextField type='number' color="secondary"  label='Cantidad' name='cantidad' placeholder={cantidad} required />
         </Box>
         
         <Box display='flex' justifyContent='space-around'>
