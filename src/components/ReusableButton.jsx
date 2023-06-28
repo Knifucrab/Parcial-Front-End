@@ -43,7 +43,7 @@ function ReusableButton({nombre,fecha,categoria,precio,cantidad,total,funcion,se
           handleClose={handleClose}
           nombre={nombre}
           producto={producto}
-          row={row}
+          row={[row]}
           rowLength={rowLength}
           currentId={currentId}
           />
