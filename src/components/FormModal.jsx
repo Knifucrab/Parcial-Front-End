@@ -96,7 +96,7 @@ function FormModal({ fecha, categoria, precio, cantidad, producto, setRow, handl
     return (
       <form className='FormModal' onSubmit={handleEdit}>
         <Box sx={{mb: 2}}>
-          <TextField label="Fecha" color="secondary" focused type='date' name='fecha' required />
+          <TextField label="Fecha" color="secondary" focused name='fecha' disabled defaultValue={fecha} />
         </Box>
 
         <Box>

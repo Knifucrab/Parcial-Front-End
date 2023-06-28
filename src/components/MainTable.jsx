@@ -96,10 +96,10 @@ function MainTable() {
         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'white', p: 4 }}>
           <h2 id="delete-confirmation-modal">¿Está seguro de que desea borrar?</h2>
           <Box display="flex"  justifyContent= 'space-around'>
-          <Button variant="contained" sx={{mt: 3}} onClick={confirmDelete}>
+          <Button variant="contained" sx={{mt: 3, backgroundColor: 'rgb(100, 53, 65)'}} onClick={confirmDelete}>
             Sí
           </Button>
-          <Button variant="contained" sx={{mt: 3}} onClick={cancelDelete}>
+          <Button variant="contained" sx={{mt: 3, backgroundColor: 'rgb(201, 143, 168)'}} onClick={cancelDelete}>
             No
           </Button>
           </Box>
