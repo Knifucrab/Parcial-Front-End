@@ -1,3 +1,4 @@
+import { Box, Button, Radio, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 
 function FormModal({ fecha, categoria, precio, cantidad, producto, setRow, handleClose, nombre, row, rowLength, currentId }) {
@@ -25,108 +26,110 @@ function FormModal({ fecha, categoria, precio, cantidad, producto, setRow, handl
     setRow((prevList) => prevList.concat(newList));
   }
 
-function handleEdit(event) {
+  function handleEdit(event) {
     event.preventDefault();
     const categoriaEditado = event.target.elements.categoria.value;
     const precioEditado = event.target.elements.precio.value;
     const cantidadEditado = event.target.elements.cantidad.value;
     const productoEditado = event.target.elements.producto.value;
   
-    const newList = row.map((item) => {
-      if (item.id === currentId) {
-        return {
-          ...item,
-          categoria: categoriaEditado,
-          precio: precioEditado,
-          cantidad: cantidadEditado,
-          producto: productoEditado
-        };
-      } else {
+    setRow(prevList => {
+      return prevList.map(item => {
+        if (item.id === currentId) {
+          return {
+            ...item,
+            categoria: categoriaEditado,
+            precio: precioEditado,
+            cantidad: cantidadEditado,
+            producto: productoEditado
+          };
+        }
         return item;
-      }
+      });
     });
   
-    setRow(newList);
     handleClose();
   }
+  
   
 
   if (nombre === 'Agregar producto') {
     return (
       <form className='FormModal' onSubmit={handleSubmit}>
-        <div>
-          <label>Fecha</label>
-          <input type='date' name='fecha' required />
-        </div>
+        <Box sx={{mb: 2}}>
+          <TextField label="Fecha" color="secondary" focused type='date' name='fecha' required />
+        </Box>
 
-        <div>
-          <label>Categoria</label>
-          <input type="radio" id="limpieza" name="categoria" value="limpieza" required />
-          <label htmlFor="limpieza">Limpieza</label>
-          <input type="radio" id="comestibles" name="categoria" value="comestibles" required />
-          <label htmlFor="comestibles">Comestibles</label>
-          <input type="radio" id="descartables" name="categoria" value="Descartables" required />
-          <label htmlFor="descartables">Descartables</label>
+        <Box>
+          <Typography>Categoria</Typography>
+
+          <Typography sx={{display:'inline-block', mr: 5}} htmlFor="limpieza">Limpieza</Typography>
+          <input type="radio" id="limpieza" name="categoria" value="limpieza" required /><br />
+
+          <Typography sx={{display:'inline-block', mr: 1.9}} htmlFor="comestibles">Comestibles</Typography>
+          <input type="radio" id="comestibles" name="categoria" value="comestibles" required /><br />
+          
+          <Typography sx={{display:'inline-block', mr: 1.2}} htmlFor="descartables">Descartables</Typography>
+          <input type="radio" id="descartables" name="categoria" value="Descartables" required /><br />
+          <Typography sx={{display:'inline-block', mr: 8.2}} htmlFor="otros">Otros</Typography>
           <input type="radio" id="otros" name="categoria" value="otros" required />
-          <label htmlFor="otros">Otros</label>
-        </div>
+        </Box>
 
-        <div>
-          <label>Producto</label>
-          <input type='text' name='producto' placeholder="Ingresar nombre producto" required />
-        </div>
+        <Box sx={{mb: 2, mt: 2}}>
+          <TextField type='text' color="secondary"  label='Producto' name='producto' placeholder="Ingresar nombre producto" required />
+        </Box>
 
-        <div>
-          <label>Precio</label>
-          <input type='number' name='precio' placeholder="Ingresar precio individual" required />
-        </div>
+        <Box sx={{mb: 2}}>
+          <TextField type='number' color="secondary"  label='Precio' name='precio' placeholder="Ingresar precio individual" required />
+        </Box>
 
-        <div>
-          <label>Cantidad</label>
-          <input type='number' name='cantidad' placeholder="Ingresar cantidad de productos" required />
-        </div>
-
-        <button type='submit' name='AddButton' >Add</button>
-        <button onClick={handleClose}>Cancelar</button>
+        <Box sx={{mb: 2, mt: 2}}>
+          <TextField type='number' color="secondary"  label='Cantidad' name='cantidad' placeholder="Ingresar cantidad de productos" required />
+        </Box>
+      <Box display='flex' justifyContent='space-around'>
+        <Button variant='contained' type='submit' name='AddButton' sx={{backgroundColor: 'rgb(100, 53, 65)'}} >Add</Button>
+        <Button variant='contained' onClick={handleClose} sx={{backgroundColor: 'rgb(201, 143, 168)'}}>Cancelar</Button>
+      </Box>
       </form>
     );
   } else {
     return (
       <form className='FormModal' onSubmit={handleEdit}>
-        <div>
-          <label>Fecha</label>
-          <input type='text' name='fecha' placeholder={fecha} disabled />
-        </div>
+        <Box sx={{mb: 2}}>
+          <TextField label="Fecha" color="secondary" focused type='date' name='fecha' required />
+        </Box>
 
-        <div>
-          <label>Categoria</label>
-          <input type="radio" id="limpieza" name="categoria" value="limpieza" required />
-          <label htmlFor="limpieza">Limpieza</label>
-          <input type="radio" id="comestibles" name="categoria" value="comestibles" required />
-          <label htmlFor="comestibles">Comestibles</label>
-          <input type="radio" id="descartables" name="categoria" value="Descartables" required />
-          <label htmlFor="descartables">Descartables</label>
+        <Box>
+          <Typography>Categoria</Typography>
+
+          <Typography sx={{display:'inline-block', mr: 5}} htmlFor="limpieza">Limpieza</Typography>
+          <input type="radio" id="limpieza" name="categoria" value="limpieza" required /><br />
+
+          <Typography sx={{display:'inline-block', mr: 1.9}} htmlFor="comestibles">Comestibles</Typography>
+          <input type="radio" id="comestibles" name="categoria" value="comestibles" required /><br />
+          
+          <Typography sx={{display:'inline-block', mr: 1.2}} htmlFor="descartables">Descartables</Typography>
+          <input type="radio" id="descartables" name="categoria" value="Descartables" required /><br />
+          <Typography sx={{display:'inline-block', mr: 8.2}} htmlFor="otros">Otros</Typography>
           <input type="radio" id="otros" name="categoria" value="otros" required />
-          <label htmlFor="otros">Otros</label>
-        </div>
+        </Box>
 
-        <div>
-          <label>Producto</label>
-          <input type='text' name='producto' placeholder={producto} required />
-        </div>
+        <Box sx={{mb: 2, mt: 2}}>
+          <TextField type='text' color="secondary"  label='Producto' name='producto' placeholder="Ingresar nombre producto" required />
+        </Box>
 
-        <div>
-          <label>Precio</label>
-          <input type='number' name='precio' placeholder={precio} required />
-        </div>
+        <Box sx={{mb: 2}}>
+          <TextField type='number' color="secondary"  label='Precio' name='precio' placeholder="Ingresar precio individual" required />
+        </Box>
 
-        <div>
-          <label>Cantidad</label>
-          <input type='number' name='cantidad' placeholder={cantidad} required />
-        </div>
-
-        <button type='submit' name='EditButton' >Editar</button>
-        <button onClick={handleClose}>Cancelar</button>
+        <Box sx={{mb: 2, mt: 2}}>
+          <TextField type='number' color="secondary"  label='Cantidad' name='cantidad' placeholder="Ingresar cantidad de productos" required />
+        </Box>
+        
+        <Box display='flex' justifyContent='space-around'>
+        <Button variant='contained' sx={{backgroundColor: 'rgb(100, 53, 65)'}} type='submit' name='EditButton' >Editar</Button>
+        <Button variant='contained' sx={{backgroundColor: 'rgb(201, 143, 168)'}} onClick={handleClose}>Cancelar</Button>
+        </Box>
       </form>
     );
   }
