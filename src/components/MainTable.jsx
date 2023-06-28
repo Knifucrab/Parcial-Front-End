@@ -77,7 +77,7 @@ function MainTable() {
                     rowLength={rowLength}
                     currentId={row.id}
                   />
-                  <Button variant="contained" currentId={row.id} onClick={() => handleDelete(row.id)}>
+                  <Button sx={{backgroundColor: 'rgb(201, 143, 168)'}} variant="contained" currentId={row.id} onClick={() => handleDelete(row.id)}>
                     Borrar
                   </Button>
                 </TableCell>

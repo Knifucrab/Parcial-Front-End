@@ -24,7 +24,7 @@ function ReusableButton({nombre,fecha,categoria,precio,cantidad,total,funcion,se
 
     return(
         <Box sx={{ m: 5, flexGrow: 1 }}>
-        <Button variant="outlined" onClick={handleOpen}>{nombre}</Button>
+        <Button variant="contained"  sx={{ bgcolor: 'rgb(100, 53, 65)' }} onClick={handleOpen}>{nombre}</Button>
         <Modal
         open={open}
         onClose={handleClose}
